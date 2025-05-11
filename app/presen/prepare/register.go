@@ -55,14 +55,7 @@ func createCreds() credentials.TransportCredentials {
 
 // コンストラクタ
 func NewQueryServer(category pb.CategoryQueryServer, product pb.ProductQueryServer) *QueryServer {
-	serverOpts := []grpc.ServerOption{
-		// セキュア伝送サポート機能を登録
-		grpc.Creds(createCreds()),
-		// ログ出力、入力値検証インターセプタを登録
-		grpc.UnaryInterceptor(chainUnaryInterceptor),
-	}
-	// gRPCサーバを生成する(インターセプタの追加)
-	server := grpc.NewServer(serverOpts...)
+	server := grpc.NewServer()
 
 	// CategoryQueryServerを登録する
 	pb.RegisterCategoryQueryServer(server, category)
