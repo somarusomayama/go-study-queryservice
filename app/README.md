@@ -2,7 +2,8 @@
 ---
 title: Query service packages
 ---
-graph TB
+%% This Mermaid diagram represents the dependency relationships between packages.
+flowchart TB
     subgraph "presen"
         A-1[builder]
         A-2[server]
